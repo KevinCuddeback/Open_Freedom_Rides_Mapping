@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Sources",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["id", "title", "type", "url_or_citation"],
+    "properties": {
+      "id": {"type": "string"},
+      "title": {"type": "string"},
+      "type": {"type": "string"},
+      "url_or_citation": {"type": "string"}
+    }
+  }
+}

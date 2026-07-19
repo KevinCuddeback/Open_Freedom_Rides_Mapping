@@ -1,0 +1,14 @@
+== Summary ==
+{{{summary|Freedom Rides map generated from source-cited historical records.}}}
+
+== Author ==
+{{{author|Open Freedom Rides Mapping contributors}}}
+
+== Source ==
+{{{source|Generated from repository data pipeline outputs.}}}
+
+== Date ==
+{{{date|{{subst:CURRENTYEAR}}-{{subst:CURRENTMONTH}}-{{subst:CURRENTDAY2}}}}}
+
+== Licensing ==
+{{CC-BY-SA-4.0}}
