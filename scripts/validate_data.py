@@ -122,9 +122,7 @@ def main() -> int:
     validate_references(events, riders, locations, sources, errors)
 
     if errors:
-        print("Validation FAILED")
-        for error in errors:
-            print(f"- {error}")
+        print(f"Validation FAILED ({len(errors)} issue(s) detected)")
         return 1
 
     print("Validation passed")
