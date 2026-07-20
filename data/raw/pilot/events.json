@@ -4,7 +4,9 @@
     "event_type": "departure",
     "date": "1961-05-04",
     "date_precision": "day",
-    "rider_ids": ["rider-john-lewis"],
+    "rider_ids": [
+      "rider-john-lewis"
+    ],
     "location_id": "loc-washington-dc",
     "description": "Pilot route departure event from Washington, D.C.",
     "source_refs": [
@@ -24,7 +26,9 @@
     "event_type": "stop",
     "date": "1961-05-04",
     "date_precision": "day",
-    "rider_ids": ["rider-john-lewis"],
+    "rider_ids": [
+      "rider-john-lewis"
+    ],
     "location_id": "loc-richmond-va",
     "description": "Intermediate stop and terminal testing actions.",
     "source_refs": [
@@ -44,7 +48,10 @@
     "event_type": "arrival",
     "date": "1961-05-04",
     "date_precision": "day",
-    "rider_ids": ["rider-john-lewis", "rider-diane-nash"],
+    "rider_ids": [
+      "rider-john-lewis",
+      "rider-diane-nash"
+    ],
     "location_id": "loc-charlotte-nc",
     "description": "Arrival and continuation planning in Charlotte.",
     "source_refs": [
@@ -58,5 +65,54 @@
       "reason": null
     },
     "geometry_confidence": "high"
+  },
+  {
+    "id": "evt-1961-05-17-nashville-resumption",
+    "event_type": "departure",
+    "date": "1961-05-17",
+    "date_precision": "day",
+    "rider_ids": [
+      "rider-bernard-lafayette",
+      "rider-diane-nash"
+    ],
+    "location_id": "loc-nashville-tn",
+    "description": "Nashville student organizers coordinated and launched the continuation Freedom Ride toward Alabama.",
+    "source_refs": [
+      {
+        "source_id": "src-tennessean-1961-05-18",
+        "note": "Contemporary reporting on departure and organizer participation"
+      },
+      {
+        "source_id": "src-arsenault-freedom-riders",
+        "note": "Narrative account of Nashville resumption strategy"
+      }
+    ],
+    "inference": {
+      "is_inferred": false,
+      "reason": null
+    },
+    "geometry_confidence": "high"
+  },
+  {
+    "id": "evt-1961-05-17-birmingham-arrival",
+    "event_type": "arrival",
+    "date": "1961-05-17",
+    "date_precision": "day",
+    "rider_ids": [
+      "rider-bernard-lafayette"
+    ],
+    "location_id": "loc-birmingham-al",
+    "description": "Continuation riders reached Birmingham amid threats and transit disruption.",
+    "source_refs": [
+      {
+        "source_id": "src-arsenault-freedom-riders",
+        "note": "Arrival chronology and conditions in Birmingham"
+      }
+    ],
+    "inference": {
+      "is_inferred": true,
+      "reason": "Exact arrival time is not included in this pilot batch; day-level chronology is source-backed."
+    },
+    "geometry_confidence": "medium"
   }
 ]

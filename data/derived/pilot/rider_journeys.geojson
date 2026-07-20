@@ -50,6 +50,52 @@
     {
       "type": "Feature",
       "properties": {
+        "feature_type": "route_segment",
+        "segment_id": "seg-rider-diane-nash-001",
+        "rider_id": "rider-diane-nash",
+        "from_event_id": "evt-1961-05-04-charlotte-arrival",
+        "to_event_id": "evt-1961-05-17-nashville-resumption"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -80.8431,
+            35.2271
+          ],
+          [
+            -86.7816,
+            36.1627
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "feature_type": "route_segment",
+        "segment_id": "seg-rider-bernard-lafayette-001",
+        "rider_id": "rider-bernard-lafayette",
+        "from_event_id": "evt-1961-05-17-birmingham-arrival",
+        "to_event_id": "evt-1961-05-17-nashville-resumption"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -86.8104,
+            33.5186
+          ],
+          [
+            -86.7816,
+            36.1627
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
         "feature_type": "event_node",
         "event_id": "evt-1961-05-04-charlotte-arrival",
         "event_type": "arrival",
@@ -123,6 +169,63 @@
         "coordinates": [
           -77.436,
           37.5407
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "feature_type": "event_node",
+        "event_id": "evt-1961-05-17-birmingham-arrival",
+        "event_type": "arrival",
+        "date": "1961-05-17",
+        "location_id": "loc-birmingham-al",
+        "rider_ids": [
+          "rider-bernard-lafayette"
+        ],
+        "source_refs": [
+          {
+            "source_id": "src-arsenault-freedom-riders",
+            "note": "Arrival chronology and conditions in Birmingham"
+          }
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.8104,
+          33.5186
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "feature_type": "event_node",
+        "event_id": "evt-1961-05-17-nashville-resumption",
+        "event_type": "departure",
+        "date": "1961-05-17",
+        "location_id": "loc-nashville-tn",
+        "rider_ids": [
+          "rider-bernard-lafayette",
+          "rider-diane-nash"
+        ],
+        "source_refs": [
+          {
+            "source_id": "src-tennessean-1961-05-18",
+            "note": "Contemporary reporting on departure and organizer participation"
+          },
+          {
+            "source_id": "src-arsenault-freedom-riders",
+            "note": "Narrative account of Nashville resumption strategy"
+          }
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -86.7816,
+          36.1627
         ]
       }
     }
