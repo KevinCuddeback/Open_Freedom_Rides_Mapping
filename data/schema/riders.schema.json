@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Riders",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "required": ["id", "name", "birth_date", "tags"],
+    "properties": {
+      "id": {"type": "string"},
+      "name": {"type": "string"},
+      "birth_date": {"type": "string", "format": "date"},
+      "tags": {"type": "array", "items": {"type": "string"}}
+    }
+  }
+}

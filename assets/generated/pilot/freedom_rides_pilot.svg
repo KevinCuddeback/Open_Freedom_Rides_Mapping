@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="600" viewBox="0 0 1000 600">
+<rect x="0" y="0" width="1000" height="600" fill="#f8f8f8" />
+<text x="20" y="30" font-size="20" font-family="sans-serif">Freedom Rides Pilot Journey Map</text>
+<line x1="0.00" y1="600.00" x2="1000.00" y2="0.00" stroke="#b11f24" stroke-width="3" opacity="0.8" />
+<line x1="1000.00" y1="0.00" x2="895.14" y2="222.79" stroke="#b11f24" stroke-width="3" opacity="0.8" />
+<circle cx="0.00" cy="600.00" r="5" fill="#1f3a93" />
+<circle cx="1000.00" cy="0.00" r="5" fill="#1f3a93" />
+<circle cx="895.14" cy="222.79" r="5" fill="#1f3a93" />
+</svg>

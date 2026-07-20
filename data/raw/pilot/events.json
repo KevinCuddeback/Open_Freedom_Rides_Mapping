@@ -1,0 +1,62 @@
+[
+  {
+    "id": "evt-1961-05-04-departure-dc",
+    "event_type": "departure",
+    "date": "1961-05-04",
+    "date_precision": "day",
+    "rider_ids": ["rider-john-lewis"],
+    "location_id": "loc-washington-dc",
+    "description": "Pilot route departure event from Washington, D.C.",
+    "source_refs": [
+      {
+        "source_id": "src-sncc-archive",
+        "note": "Departure date and route framing"
+      }
+    ],
+    "inference": {
+      "is_inferred": false,
+      "reason": null
+    },
+    "geometry_confidence": "high"
+  },
+  {
+    "id": "evt-1961-05-04-richmond-stop",
+    "event_type": "stop",
+    "date": "1961-05-04",
+    "date_precision": "day",
+    "rider_ids": ["rider-john-lewis"],
+    "location_id": "loc-richmond-va",
+    "description": "Intermediate stop and terminal testing actions.",
+    "source_refs": [
+      {
+        "source_id": "src-congress-oral-history",
+        "note": "Testimony references stop details"
+      }
+    ],
+    "inference": {
+      "is_inferred": true,
+      "reason": "Exact timestamp unavailable; location and date are source-supported"
+    },
+    "geometry_confidence": "medium"
+  },
+  {
+    "id": "evt-1961-05-04-charlotte-arrival",
+    "event_type": "arrival",
+    "date": "1961-05-04",
+    "date_precision": "day",
+    "rider_ids": ["rider-john-lewis", "rider-diane-nash"],
+    "location_id": "loc-charlotte-nc",
+    "description": "Arrival and continuation planning in Charlotte.",
+    "source_refs": [
+      {
+        "source_id": "src-sncc-archive",
+        "note": "Route segment continuity"
+      }
+    ],
+    "inference": {
+      "is_inferred": false,
+      "reason": null
+    },
+    "geometry_confidence": "high"
+  }
+]

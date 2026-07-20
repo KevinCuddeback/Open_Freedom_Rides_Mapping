@@ -1,0 +1,130 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "feature_type": "route_segment",
+        "segment_id": "seg-rider-john-lewis-001",
+        "rider_id": "rider-john-lewis",
+        "from_event_id": "evt-1961-05-04-charlotte-arrival",
+        "to_event_id": "evt-1961-05-04-departure-dc"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -80.8431,
+            35.2271
+          ],
+          [
+            -77.0369,
+            38.9072
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "feature_type": "route_segment",
+        "segment_id": "seg-rider-john-lewis-002",
+        "rider_id": "rider-john-lewis",
+        "from_event_id": "evt-1961-05-04-departure-dc",
+        "to_event_id": "evt-1961-05-04-richmond-stop"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -77.0369,
+            38.9072
+          ],
+          [
+            -77.436,
+            37.5407
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "feature_type": "event_node",
+        "event_id": "evt-1961-05-04-charlotte-arrival",
+        "event_type": "arrival",
+        "date": "1961-05-04",
+        "location_id": "loc-charlotte-nc",
+        "rider_ids": [
+          "rider-john-lewis",
+          "rider-diane-nash"
+        ],
+        "source_refs": [
+          {
+            "source_id": "src-sncc-archive",
+            "note": "Route segment continuity"
+          }
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -80.8431,
+          35.2271
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "feature_type": "event_node",
+        "event_id": "evt-1961-05-04-departure-dc",
+        "event_type": "departure",
+        "date": "1961-05-04",
+        "location_id": "loc-washington-dc",
+        "rider_ids": [
+          "rider-john-lewis"
+        ],
+        "source_refs": [
+          {
+            "source_id": "src-sncc-archive",
+            "note": "Departure date and route framing"
+          }
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.0369,
+          38.9072
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "feature_type": "event_node",
+        "event_id": "evt-1961-05-04-richmond-stop",
+        "event_type": "stop",
+        "date": "1961-05-04",
+        "location_id": "loc-richmond-va",
+        "rider_ids": [
+          "rider-john-lewis"
+        ],
+        "source_refs": [
+          {
+            "source_id": "src-congress-oral-history",
+            "note": "Testimony references stop details"
+          }
+        ]
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          -77.436,
+          37.5407
+        ]
+      }
+    }
+  ]
+}

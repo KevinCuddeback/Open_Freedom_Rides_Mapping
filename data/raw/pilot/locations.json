@@ -1,0 +1,23 @@
+[
+  {
+    "id": "loc-washington-dc",
+    "name": "Washington, D.C.",
+    "latitude": 38.9072,
+    "longitude": -77.0369,
+    "precision": "city"
+  },
+  {
+    "id": "loc-richmond-va",
+    "name": "Richmond, Virginia",
+    "latitude": 37.5407,
+    "longitude": -77.436,
+    "precision": "city"
+  },
+  {
+    "id": "loc-charlotte-nc",
+    "name": "Charlotte, North Carolina",
+    "latitude": 35.2271,
+    "longitude": -80.8431,
+    "precision": "city"
+  }
+]
