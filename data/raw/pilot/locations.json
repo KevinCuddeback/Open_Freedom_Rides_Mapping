@@ -19,5 +19,19 @@
     "latitude": 35.2271,
     "longitude": -80.8431,
     "precision": "city"
+  },
+  {
+    "id": "loc-nashville-tn",
+    "name": "Nashville, Tennessee",
+    "latitude": 36.1627,
+    "longitude": -86.7816,
+    "precision": "city"
+  },
+  {
+    "id": "loc-birmingham-al",
+    "name": "Birmingham, Alabama",
+    "latitude": 33.5186,
+    "longitude": -86.8104,
+    "precision": "city"
   }
 ]

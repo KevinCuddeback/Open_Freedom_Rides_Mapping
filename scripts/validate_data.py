@@ -25,6 +25,11 @@ REQUIRED_FIELDS = {
     },
 }
 
+ALLOWED_DATE_PRECISIONS = {"day", "month", "year", "unknown"}
+ALLOWED_LOCATION_PRECISIONS = {"facility", "city", "region", "approximate"}
+ALLOWED_EVENT_TYPES = {"departure", "arrival", "stop", "incident", "arrest", "detention", "meeting"}
+ALLOWED_GEOMETRY_CONFIDENCE = {"high", "medium", "low", "unknown"}
+
 
 def load_table(name: str) -> list[dict]:
     with (RAW / name).open("r", encoding="utf-8") as handle:
@@ -98,6 +103,64 @@ def validate_references(
                 )
 
 
+def validate_enums_and_completeness(events: list[dict], locations: list[dict], errors: list[str]) -> None:
+    for row in locations:
+        precision = row.get("precision")
+        if precision not in ALLOWED_LOCATION_PRECISIONS:
+            errors.append(
+                f"location {row.get('id')} has invalid precision {precision}; "
+                f"allowed: {', '.join(sorted(ALLOWED_LOCATION_PRECISIONS))}"
+            )
+
+    for row in events:
+        date_precision = row.get("date_precision")
+        if date_precision not in ALLOWED_DATE_PRECISIONS:
+            errors.append(
+                f"event {row.get('id')} has invalid date_precision {date_precision}; "
+                f"allowed: {', '.join(sorted(ALLOWED_DATE_PRECISIONS))}"
+            )
+
+        event_type = row.get("event_type")
+        if event_type not in ALLOWED_EVENT_TYPES:
+            errors.append(
+                f"event {row.get('id')} has invalid event_type {event_type}; "
+                f"allowed: {', '.join(sorted(ALLOWED_EVENT_TYPES))}"
+            )
+
+        geometry_confidence = row.get("geometry_confidence", "unknown")
+        if geometry_confidence not in ALLOWED_GEOMETRY_CONFIDENCE:
+            errors.append(
+                f"event {row.get('id')} has invalid geometry_confidence {geometry_confidence}; "
+                f"allowed: {', '.join(sorted(ALLOWED_GEOMETRY_CONFIDENCE))}"
+            )
+
+        rider_ids = row.get("rider_ids")
+        if not isinstance(rider_ids, list) or len(rider_ids) == 0:
+            errors.append(f"event {row.get('id')} must include at least one rider_id")
+
+        source_refs = row.get("source_refs")
+        if not isinstance(source_refs, list) or len(source_refs) == 0:
+            errors.append(f"event {row.get('id')} must include at least one source_ref")
+        else:
+            for index, source_ref in enumerate(source_refs, start=1):
+                source_id = source_ref.get("source_id")
+                note = source_ref.get("note")
+                if not isinstance(source_id, str) or not source_id.strip():
+                    errors.append(f"event {row.get('id')} source_refs[{index}] has empty source_id")
+                if not isinstance(note, str) or not note.strip():
+                    errors.append(f"event {row.get('id')} source_refs[{index}] has empty note")
+
+        inference = row.get("inference", {})
+        is_inferred = inference.get("is_inferred")
+        reason = inference.get("reason")
+        if is_inferred is True and not isinstance(reason, str):
+            errors.append(f"event {row.get('id')} inferred event must provide a reason")
+        if is_inferred is False and reason not in (None, ""):
+            errors.append(
+                f"event {row.get('id')} non-inferred event should set inference.reason to null or empty"
+            )
+
+
 def main() -> int:
     errors: list[str] = []
 
@@ -120,6 +183,7 @@ def main() -> int:
     validate_dates(events, riders, errors)
     validate_coordinates(locations, errors)
     validate_references(events, riders, locations, sources, errors)
+    validate_enums_and_completeness(events, locations, errors)
 
     if errors:
         print(f"Validation FAILED ({len(errors)} issue(s) detected)")

@@ -3,12 +3,27 @@
     "id": "rider-john-lewis",
     "name": "John Lewis",
     "birth_date": "1940-02-21",
-    "tags": ["student", "core"]
+    "tags": [
+      "student",
+      "core"
+    ]
   },
   {
     "id": "rider-diane-nash",
     "name": "Diane Nash",
     "birth_date": "1938-05-15",
-    "tags": ["coordinator", "core"]
+    "tags": [
+      "coordinator",
+      "core"
+    ]
+  },
+  {
+    "id": "rider-bernard-lafayette",
+    "name": "Bernard Lafayette",
+    "birth_date": "1940-07-29",
+    "tags": [
+      "student",
+      "sncc"
+    ]
   }
 ]
