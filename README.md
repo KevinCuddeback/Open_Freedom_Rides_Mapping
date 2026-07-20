@@ -118,6 +118,7 @@ Full contributor instructions: [`docs/contributing.md`](docs/contributing.md)
 ### 🔄 Milestone 2 — Pilot Dataset (in progress)
 - Expand rider, location, event, and source records for the pilot dataset
 - Harden schema validation checks and improve data completeness
+- Establish ingestion foundations for rider, station/facility, carrier, and segment records (spidering, downloading, normalization contracts)
 
 ### 🔜 Milestone 3 — Geospatial Enrichment
 - Improve route-building semantics for journey interruptions and overlaps
