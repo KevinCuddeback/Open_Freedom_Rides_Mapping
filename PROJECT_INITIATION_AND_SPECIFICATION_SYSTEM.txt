@@ -1,0 +1,113 @@
+PROJECT INITIATION AND SPECIFICATION SYSTEM
+PROJECT NAME: The Open Freedom Rides Mapping Project (OFRMP)
+MAXIMUM DATA SYSTEM CAPACITY: Relational Spatiotemporal Open Source Architecture
+
+GOAL
+To create an open-source library of Freedom Ride Facts, capable of generating maps for use by historians, archivists, and Wikipedia, with a particular emphasis on simple illustrations for Wikimedia Commons and highly personalized personal histories of riders, places, and transit networks.
+
+PHASE 1: DATA COLLECTION AND DIGITIZATION
+
+The primary objective is translating narrative history into a machine-readable data foundation, treating the definitive text "Freedom Riders: 1961 and the Struggle for Racial Justice" by Raymond Arsenault as the foundational source of truth.
+
+The ingestion system must read raw historical texts and parse them into four distinct flat tables: Riders, Transit Links, Carriers, and Incidents.
+
+1. Rider Profile Extraction
+The system captures every participant mentioned in the campaign. Each entry must catalog full name, original organizing affiliation (such as CORE, SNCC, SCLC, or NAACP), gender markers to power the personal history rendering engine, and biographical data points like home city and birth/death years.
+2. Transit Link Segmentation
+The continuous journey must be chopped into distinct spatiotemporal edges. A transit link represents a singular leg of a journey from an origin point to a destination point, bound by a specific date, a specific departure time window, and a designated carrier.
+3. Carrier Identification
+The system must maintain high structural fidelity regarding transit operators. It cannot genericize bus travel. The database must isolate national networks like the Greyhound Corporation from complex, regional, decentralized networks like the National Trailways Bus System, and specifically isolate distinct regional operational blocks such as Carolina Trailways.
+4. Incident Tracking
+Every physical checkpoint where the riders encountered violence, institutional intimidation, unlawful arrest, or terminal facility defiance must be isolated as an independent event node. These nodes attach directly to the transit link where they transpired.
+
+PHASE 2: MULTI-ARCHIVE CROSS-LINKING
+
+This phase breaks the transport dataset out of isolation by linking the core transport vectors to the broader web of civil rights digital infrastructure, creating a decentralized data graph.
+
+RELATIONAL DATA ARCHITECTURE ASCII DIAGRAM
+
++-------------------------------------------------------------+
+|               ARSENAULT NARRATIVE DATA BASE                 |
++-------------------------------------------------------------+
+|
++----------------------+----------------------+
+|                                             |
++-----------------------------+       +-----------------------------+
+|       SPATIAL NETWORK       |       |      PRIMARY ARCHIVES       |
++-----------------------------+       +-----------------------------+
+|                                     |
+|-- Facilities & Hubs                 |-- MDAH Arrest Records
+|-- Route Geometries                  |-- MSSC Surveillance Files
+|-- Transit Modalities                |-- CRMvet Veteran Rosters
+|-- AAPB Oral Histories
+|-- CRDL Media Records
+
+Cross-Linking Specifications:
+
+1. State Surveillance and Carceral Data
+Every unique rider identifier must map directly to the Mississippi State Sovereignty Commission (MSSC) files and the Mississippi Department of Archives and History (MDAH) Freedom Rider files. This connection maps public-domain carceral mugshots and official state arrest logs directly into the spatial journey of the individual.
+2. Veteran Rosters and Oral Contexts
+Rider profiles must link directly to the Civil Rights Movement Veterans (CRMvet.org) digital database to integrate community journals and post-movement veteran data. Profiles must also link to the American Archive of Public Broadcasting (AAPB) to attach timestamped URLs of unedited raw interview audio and video footage directly to the geographic zones where the events occurred.
+3. Media and Campaign Aggregation
+Geographic location nodes must be cross-linked with the Civil Rights Digital Library (CRDL) to dynamically pull historical newsreels, photographs, and contemporary press dispatches. The spatial campaign metrics must be linked to the Global Nonviolent Action Database at Swarthmore College to contextualize local logistical actions within the larger macroscale strategies of strategic nonviolent direct action.
+4. Historical Logistical Context
+The dataset will ingest historical scheduling books, corporate operating maps, and timetables for Greyhound, National Trailways, the Illinois Central Railroad, the Louisville and Nashville Railroad, and regional airlines to align the activist routing with the real-world transportation network of 1961.
+
+PHASE 3: FINAL PRE-MAP PROCESSING AND DATA INTERPOLATION
+
+Raw historical accounts often contain geographic gaps or chronological ambiguities. This phase enforces complete structural, mathematical, and spatial integrity across the network before any map rendering occurs.
+
+1. Geospatial Grounding
+Absolute latitude and longitude coordinates must be resolved for every historic facility node. This includes identifying the exact city blocks where historic bus depots, train stations, municipal airfields, and roadside ambush sites sat in 1961, rather than using modern city center coordinates.
+2. Spatiotemporal Continuity
+All chronological data points must follow strict ISO 8601 formatting (YYYY-MM-DDTHH:MM:SSZ). The system must run integrity checks to identify and surface conflicting date reports caused by legacy transcription errors. The script must explicitly calculate and categorize operational travel states:
+
+* Stationary multi-day intervals (Overnight Stops)
+* Continuous travel segments spanning calendar dates (Overnight Journeys)
+* Medical or security bypass windows (such as emergency flights or train reroutes)
+
+3. Spatial Edge Interpolation and Void Filling
+When specific highway routing or minor secondary road segments are missing from narrative histories, the pipeline must utilize historic 1961 United States Department of Transportation maps to infer the most logical route. Any inferred geometries must carry a specialized low confidence attribute tag to maintain absolute academic transparency.
+
+PHASE 4: MAPABILITY ARCHITECTURE
+
+The data layer must be kept separate from the visualization layer. The data backbone relies on a highly rigorous, open Relational Node-Edge GeoJSON model.
+
+1. Node Model Architecture
+Physical spaces, transport hubs, and localized incidents represent independent point nodes. They hold precise spatial coordinates and act as anchor pins on the map canvas.
+2. Edge Model Architecture
+Transit paths represent directed spatial edges. Each edge contains an array of coordinate vectors tracing the path of movement. To ensure programmatic traversability, every edge must contain a relational pointer to its explicit prior segment ID and its next segment ID. This permits software scripts to loop through the database and trace an individual's unbroken physical path through space and time.
+3. Scale Independence
+The engine must output raw, un-pixelated, W3C-compliant Scalable Vector Graphics (SVG) code. This ensures all generated files scale cleanly across digital platforms and high-resolution print publications without loss of text legibility or vector line sharpness.
+
+PHASE 5: MAP FILTERING AND USER INTERFACE LAYER
+
+The frontend application will compile entirely client-side using OpenLayers or Maplibre GL JS. It must parse the data layer dynamically based on three main interactive operations:
+
+FRONTEND INTERACTION LOGIC FLOW DIAGRAM
+
+[ Search Interface ] ===> Selects Rider ID ===> Executes Her/His Journey Path
+[ Checkbox Matrix ]  ===> Toggles Modalities ===> Filters Visual Edge Types
+[ Trauma Toggle ]    ===> Flips Event Flags  ===> Suppresses Incident Nodes
+
+Interface Functional Specifications:
+
+1. Biographical Filter (Her/His Journey)
+The user faces a clean search input driven by auto-completing rider names. Selecting an individual instantly filters the map display, zeroing out all unrelated lines and highlighting only the spatial segments where that rider's unique identifier is present in the passenger array. The application will render a step-by-step chronological sidebar tracking that individual's unique experience.
+2. Transport System Matrix
+A multi-select layout allows users to isolate networks. Users can toggle visibility by transport mode (Bus, Rail, Air) or by specific corporate entity. Crucially, the system must allow a user to isolate the National Trailways network from regional networks like Carolina Trailways, allowing historians to study the variations in corporate integration compliance.
+3. Trauma and Sensitivity Control
+A primary user interface switch lets the user hide or show intense events. When set to hide events, all visual indicators of violence, bombings, and arrests are suppressed. The map instantly redraws to display the campaign purely as a logistical narrative of nonviolent transit defiance rather than focusing exclusively on the points of trauma.
+
+PHASE 6: RELEASE, PUBLICATION, AND WIKIMEDIA DISTRIBUTION
+
+1. Open Repository Structuring
+The entire code repository will be committed to GitHub under an open MIT License. The structural databases (JSON, CSV, GeoJSON) will carry a Creative Commons CC0 Public Domain dedication to remove all intellectual property barriers for global research reuse.
+2. Automated Wikimedia Commons Pipeline
+The repository will include a headless Python automation script. When executed, this script runs through standard filter matrix combinations and automatically generates a complete suite of static SVG maps custom-tailored for Wikipedia infoboxes. The script will output standardized asset documentation sidecars containing pre-formatted Wikipedia information templates, appropriate category tags, and historical citations to enable direct bulk uploads.
+3. Standalone Data Packages
+The system will automatically bundle raw CSV data tables, historic facility shapefiles, and standard SVG graphics into compressed release packages. This allows educators, authors, and museum curators to directly import the spatial assets into standard desktop GIS suites without writing code.
+
+PHASE 7: TECHNICAL DATA DICTIONARY AND SCHEMA DEFRACTION
+
+To guide development, the data layout must conform strictly to the unified JSON architectures documented in /home/runner/work/Open_Freedom_Rides_Mapping/Open_Freedom_Rides_Mapping/schemas/ofrmp.schema.json.
